@@ -1,0 +1,11 @@
+#holder{
+    background-color: rgba(0,0,0, 0.7);
+    color: white;
+}
+
+
+@media only screen and (min-width: 768px) {
+    #holder{
+        width: 100%
+    }
+}

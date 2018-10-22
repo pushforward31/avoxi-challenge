@@ -1,0 +1,16 @@
+#table{
+    /* font: white; */
+    font-size: 20px
+}
+
+/* @media screen and (max-width: 768px) {
+    #table{
+        font-size: 12px;
+    }
+} */
+
+@media screen and (max-width: 640px) {
+    #table{
+        font-size: 12px;
+    }
+}
