@@ -13,18 +13,18 @@ import "./omdb.css";
 
 class Omdb extends Component {
   state = {
-    result: {},
+    result: [],
     search: ""
   };
 
-  // When this component mounts, search for the movie "Ready Player One"
+  // When this component mounts, search for the movie "Godzilla"
   componentDidMount() {
-    this.searchMovies("Ready Player One");
+    this.searchMovies("Godzilla");
   }
 
   searchMovies = query => {
     API.search(query)
-      .then(res =>{ this.setState({ result: res.data })
+      .then(res =>{ this.setState({ result: res.data.Search })
 
       console.log(res);
     })
@@ -47,29 +47,26 @@ class Omdb extends Component {
   };
 
   render() {
+    // const items = this.props.result.map((d,i) => (<>{d[i].name}</>));
     return (
       
       <Container>
        
         <Row>
           <Col>
-          {this.state.result.Title
-                ?
-           <Table heading={this.state.result.Title || "Search for a Movie to Begin"}
-                title={this.state.result.Title}
-                  src={this.state.result.Poster}
-                  director={this.state.result.Director}
-                  genre={this.state.result.Genre}
-                  released={this.state.result.Released}
-                  plot={this.state.result.Plot}
-                  rated={this.state.result.Rated}
-                  runtime={this.state.result.Runtime}
-                  year={this.state.result.Year}
-                  imd={this.state.result.imdbRating}
-                  website={this.state.result.Website}
+          {this.state.result.map((item, index) => (
+               
+           <Table key = {index}
+                
+                 
+                  title={item.Title}
+                  src={item.Poster}
+                  type={item.Type}
+                  year={item.Year}
+                 
            
            />           
-             : <h3>No Results to Display</h3>}
+          ))}
           </Col>
           <Col2>
             <Panel heading="Search">
